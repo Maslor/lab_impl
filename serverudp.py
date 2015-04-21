@@ -12,7 +12,7 @@ secondDestUser = ""
 
 ServerMsg = "Nice to meet you!"	
 ServerSock=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)	
-ServerSock.bind	((hostIP,hostPort))	
+ServerSock.bind((hostIP,hostPort))	
 (ClientMsg,(ClientIP,ClientPort))= ServerSock.recvfrom(1024)
 ServerSock.sendto(ServerMsg,(ClientIP, ClientPort))
 ServerSock.close()
