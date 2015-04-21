@@ -24,7 +24,7 @@ print "Quem es?"
 Input = Input + " "+raw_input()
 
 print "Para quem?"
-Input=	Input +" "+raw_input()
+Input= Input +" "+raw_input()
 
 flag=0
 
@@ -34,11 +34,11 @@ flag=0
 ClientSock=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 # Envia o registo do user para o servidor
-ClientSock.sendto(Input,('localhost',	5005))
-print	"Menssagem para o servidor: " +	Input
+ClientSock.sendto(Input,('localhost',5005))
+print "Menssagem para o servidor: " + Input
 
 # Recebe mensagem do servidor
-(ServerMsg,	(ServerIP,	ServerPort))	=	ClientSock.recvfrom (1024)  
+(ServerMsg,(ServerIP, ServerPort)) = ClientSock.recvfrom (1024)  
 print	"Menssagem do servidor: 2 Estas registado!  "
 print "modo - "+ ServerMsg
 
@@ -59,68 +59,60 @@ while True:
 			print "Vou sair tambem"
 			msg = "FIM"
 			msgtoserver="3"+" "+ msg
-			ClientSock.sendto(msgtoserver,('localhost',	5005))
-			print	("Menssagem para o servidor: " +	msg)
-			(ServerMsg,	(ServerIP,	ServerPort))	=	ClientSock.recvfrom (1024)	
-			print	("Message from server: " +	ServerMsg)
+			ClientSock.sendto(msgtoserver,('localhost', 5005))
+			print	("Menssagem para o servidor: " + msg)
+			(ServerMsg,(ServerIP, ServerPort)) = ClientSock.recvfrom(1024)	
+			print	("Message from server: " + ServerMsg)
 			print "Adeus"
-			ClientSock.close ()
+			ClientSock.close()
 			break	
 
 
 		#Se o sender quiser sair
 		if msg == "FIM":
-			ClientSock.sendto(msgtoserver,('localhost',	5005))
-			print	("Menssagem para o servidor: " +	msg)
-			(ServerMsg,	(ServerIP,	ServerPort))	=	ClientSock.recvfrom (1024)	
-			print	("Message from server: " +	ServerMsg)
+			ClientSock.sendto(msgtoserver,('localhost', 5005))
+			print	("Menssagem para o servidor: " + msg)
+			(ServerMsg, (ServerIP, ServerPort)) = ClientSock.recvfrom (1024)	
+			print	("Message from server: " + ServerMsg)
 			print "Adeus"
-			ClientSock.close ()
+			ClientSock.close()
 			break	
 		
 		# Envia input para o servidor	
 		print "vou tentar enviar"
-		ClientSock.sendto(msgtoserver,('localhost',	5005))
+		ClientSock.sendto(msgtoserver,('localhost', 5005))
 		print	("Message to server: " + msgtoserver)
 
-		(ServerMsg,	(ServerIP,	ServerPort))	=	ClientSock.recvfrom (1024)	
-		print	("Message from server: " +	ServerMsg)
+		(ServerMsg, (ServerIP, ServerPort)) = ClientSock.recvfrom(1024)	
+		print	("Message from server: " + ServerMsg)
 
 		#Se o outro user n tiver registado
 		if ServerMsg!="6 Reconhecimento de mensagem nao enviada (ERRO)":	
-			modo="reciver"
+			modo="receiver"
 			print "modo - "+ modo
 
 	# se for o leitor	
-	if modo =="reciver":
-		(ServerMsg,	(ServerIP,	ServerPort))	=	ClientSock.recvfrom (1024)	
-		print	("Message from server: " +	ServerMsg)
+	if modo =="receiver":
+		(ServerMsg, (ServerIP, ServerPort)) = ClientSock.recvfrom(1024)	
+		print	("Message from server: " + ServerMsg)
 
 		if ServerMsg=="8 - o utilizador saiu":
 			flag = 1
 
 		msgtoserver="5 USER ACK"
-		ClientSock.sendto(msgtoserver,('localhost',	5005))
+		ClientSock.sendto(msgtoserver,('localhost', 5005))
 		
 		modo="sender"
 		print "modo - "+ modo
 
 
-
-
-
-
-
-
-
-
-print("REGESTERY")
+print("REGISTRY")
 print("From?")
 Input = raw_input()	#get the input from the user
-Registery =Input #create the registery msg
+Registry =Input #create the registry msg
 print("To?")
 Input = raw_input()	#get the input from the user
-Registery = Registery +" "+Input #create the registery msg
+Registry = Registry +" "+Input #create the registry msg
 Input=""
 while  1: #need to put a right mode 
 	print("Mode W/R?")
@@ -128,4 +120,4 @@ while  1: #need to put a right mode
 	print(Input)
 	if Input=="R":break
 	if Input=="W":break
-Registery = "R "+ Input+" " + Registery #create the registery msg
+Registry = "R "+ Input+" " + Registry #create the registery msg
