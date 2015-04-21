@@ -13,11 +13,14 @@
 
 
 import socket
+<<<<<<< HEAD
 print("ICHAT SERVER")
 print
 data={}
 
 hostIP = ''  #aceita qualquer ip
+=======
+>>>>>>> ab927731ac584618b8979eb805c76b377b604de3
 hostPort = 5005
 <<<<<<< HEAD
 modeserver = ""
@@ -28,7 +31,7 @@ secondDestUser = ""
 
 ServerMsg = "Nice to meet you!"	
 ServerSock=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)	
-ServerSock.bind	((hostIP,hostPort))	
+ServerSock.bind((hostIP,hostPort))	
 (ClientMsg,(ClientIP,ClientPort))= ServerSock.recvfrom(1024)
 ServerSock.sendto(ServerMsg,(ClientIP, ClientPort))
 ServerSock.close()
