@@ -3,7 +3,6 @@
 # TFTP Opcodes
 
 import socket
-hostIP = '127.0.0.1'
 hostPort = 5005
 modeserver = ""
 firstUsername = ""
